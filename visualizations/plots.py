@@ -36,3 +36,30 @@ def plot_bid_distribution(results: List[Any], auction_type: str) -> go.Figure:
     return fig
 
 
+def plot_revenue_comparison(simulation_results: Dict[str, Any]) -> go.Figure:
+    revenues = simulation_results.get('all_revenues', [])
+    
+    fig = go.Figure()
+    fig.add_trace(go.Box(
+        y=revenues,
+        name="Revenue Distribution",
+        boxpoints='outliers'
+    ))
+    
+    avg_revenue = np.mean(revenues)
+    fig.add_hline(
+        y=avg_revenue,
+        line_dash="dash",
+        line_color="red",
+        annotation_text=f"Average: ${avg_revenue:.2f}"
+    )
+    
+    fig.update_layout(
+        title="Revenue Distribution",
+        yaxis_title="Revenue ($)",
+        showlegend=False
+    )
+    
+    return fig
+
+
