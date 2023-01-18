@@ -139,3 +139,40 @@ def plot_efficiency_over_time(results: List[Any]) -> go.Figure:
     return fig
 
 
+def plot_bid_vs_valuation(results: List[Any], auction_type: str) -> go.Figure:
+    valuations = []
+    bids = []
+    strategies = []
+    
+    for result in results:
+        valuations.append(result.winner.valuation)
+        bids.append(result.winner.bid)
+        strategies.append(result.winner.strategy)
+    
+    df = pd.DataFrame({
+        'valuation': valuations,
+        'bid': bids,
+        'strategy': strategies
+    })
+    
+    fig = px.scatter(
+        df, 
+        x='valuation', 
+        y='bid',
+        color='strategy',
+        title=f"Bidding Behavior - {auction_type.replace('_', ' ').title()} Auction",
+        labels={'valuation': 'True Valuation ($)', 'bid': 'Bid Amount ($)'}
+    )
+    
+    max_val = max(max(valuations), max(bids))
+    fig.add_trace(go.Scatter(
+        x=[0, max_val],
+        y=[0, max_val],
+        mode='lines',
+        name='Truthful Bidding Line',
+        line=dict(dash='dash', color='gray')
+    ))
+    
+    return fig
+
+
