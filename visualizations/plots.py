@@ -196,29 +196,3 @@ def create_summary_metrics_display(simulation_results: Dict[str, Any]) -> None:
         st.metric("Revenue Std Dev", f"${revenue_std:.2f}")
 
 
-def plot_auction_comparison(results_dict: Dict[str, Dict[str, Any]]) -> go.Figure:
-    auction_types = list(results_dict.keys())
-    avg_revenues = [results_dict[at]['average_revenue'] for at in auction_types]
-    avg_efficiencies = [results_dict[at]['average_efficiency'] for at in auction_types]
-    
-    fig = make_subplots(
-        rows=1, cols=2,
-        subplot_titles=('Average Revenue Comparison', 'Average Efficiency Comparison')
-    )
-    
-    fig.add_trace(
-        go.Bar(x=auction_types, y=avg_revenues, name="Revenue"),
-        row=1, col=1
-    )
-    
-    fig.add_trace(
-        go.Bar(x=auction_types, y=avg_efficiencies, name="Efficiency", marker_color='green'),
-        row=1, col=2
-    )
-    
-    fig.update_layout(
-        title="Auction Type Comparison",
-        showlegend=False
-    )
-    
-    return fig
