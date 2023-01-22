@@ -5,7 +5,7 @@ from .plots import (
     plot_efficiency_over_time,
     plot_bid_vs_valuation,
     create_summary_metrics_display,
- 
+    plot_auction_comparison
 )
 
 __all__ = [
@@ -15,5 +15,5 @@ __all__ = [
     'plot_efficiency_over_time',
     'plot_bid_vs_valuation',
     'create_summary_metrics_display',
-    
+    'plot_auction_comparison'
 ]
