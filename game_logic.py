@@ -35,3 +35,14 @@ def create_results_dataframe(auction_results: List[Any]) -> pd.DataFrame:
             'winner_payoff': result.winner.payoff
         })
     return pd.DataFrame(data)
+
+def calculate_strategy_stats(df: pd.DataFrame) -> pd.DataFrame:
+    stats = df.groupby('winner_strategy').agg({
+        'winner_payoff': ['count', 'mean', 'std'],
+        'payment': 'mean',
+        'winner_valuation': 'mean',
+        'winner_bid': 'mean'
+    }).round(2)
+    stats.columns = ['Wins', 'Avg Payoff', 'Payoff Std', 'Avg Payment', 'Avg Valuation', 'Avg Bid']
+    stats['Win Rate'] = (stats['Wins'] / len(df) * 100).round(1)
+    return stats.reset_index()
