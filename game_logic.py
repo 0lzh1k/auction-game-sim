@@ -19,3 +19,19 @@ def run_auction_simulation(auction_type: str, num_bidders: int, num_simulations:
         strategies=strategies
     )
     return results
+
+def create_results_dataframe(auction_results: List[Any]) -> pd.DataFrame:
+    data = []
+    for i, result in enumerate(auction_results):
+        data.append({
+            'simulation_id': i,
+            'winner_id': result.winner.agent_id,
+            'winner_valuation': result.winner.valuation,
+            'winner_strategy': result.winner.strategy,
+            'winner_bid': result.winner.bid,
+            'payment': result.payment,
+            'revenue': result.revenue,
+            'efficiency': result.efficiency,
+            'winner_payoff': result.winner.payoff
+        })
+    return pd.DataFrame(data)
