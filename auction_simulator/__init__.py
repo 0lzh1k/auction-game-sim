@@ -9,5 +9,7 @@ __all__ = [
     'AuctionSimulator',
     'AuctionResult',
     'BiddingStrategy',
-    
+    'get_available_strategies',
+    'generate_random_valuations',
+    'calculate_theoretical_revenue'
 ]
