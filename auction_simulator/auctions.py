@@ -14,48 +14,7 @@ class AuctionResult:
         self.efficiency = efficiency
 
 
-class Auction:
-    
-    def __init__(self, auction_type: str):
-        self.auction_type = auction_type
-        self.agents = []
-        self.result = None
-    
-    def add_agents(self, agents: List[Agent]):
-        self.agents = agents
-    
-    def run_auction(self) -> AuctionResult:
-        if not self.agents:
-            raise ValueError("No agents in auction")
-        
-        for agent in self.agents:
-            agent.reset()
-        
-        bids = []
-        for agent in self.agents:
-            bid = agent.place_bid(self.auction_type, len(self.agents))
-            bids.append(bid)
-        
-        winner, payment = self._determine_winner_and_payment(bids)
-        
-        for agent in self.agents:
-            if agent == winner:
-                agent.won = True
-                agent.calculate_payoff(payment)
-            else:
-                agent.calculate_payoff(0)
-        
-        efficiency = self._calculate_efficiency(winner)
-        
-        self.result = AuctionResult(
-            winner=winner,
-            payment=payment,
-            all_bids=bids,
-            revenue=payment,
-            efficiency=efficiency
-        )
-        
-        return self.result
+
     
     def _determine_winner_and_payment(self, bids: List[float]) -> Tuple[Agent, float]:
         if self.auction_type == "first_price":
