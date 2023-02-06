@@ -57,14 +57,7 @@ class Auction:
         
         return self.result
     
-    def _determine_winner_and_payment(self, bids: List[float]) -> Tuple[Agent, float]:
-        if self.auction_type == "first_price":
-            return self._first_price_winner_payment(bids)
-        elif self.auction_type == "second_price":
-            return self._second_price_winner_payment(bids)
-        else:
-            raise ValueError(f"Unknown auction type: {self.auction_type}")
-    
+   
     def _first_price_winner_payment(self, bids: List[float]) -> Tuple[Agent, float]:
         winner_idx = np.argmax(bids)
         winner = self.agents[winner_idx]
