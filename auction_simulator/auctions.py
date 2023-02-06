@@ -65,11 +65,7 @@ class Auction:
         else:
             raise ValueError(f"Unknown auction type: {self.auction_type}")
     
-    def _first_price_winner_payment(self, bids: List[float]) -> Tuple[Agent, float]:
-        winner_idx = np.argmax(bids)
-        winner = self.agents[winner_idx]
-        payment = bids[winner_idx]
-        return winner, payment
+  
     
     def _second_price_winner_payment(self, bids: List[float]) -> Tuple[Agent, float]:
         sorted_indices = np.argsort(bids)[::-1]
