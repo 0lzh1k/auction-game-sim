@@ -71,10 +71,7 @@ class Auction:
         payment = bids[winner_idx]
         return winner, payment
     
-    def _second_price_winner_payment(self, bids: List[float]) -> Tuple[Agent, float]:
-        sorted_indices = np.argsort(bids)[::-1]
-        winner_idx = sorted_indices[0]
-        winner = self.agents[winner_idx]
+
         
         if len(bids) > 1:
             payment = bids[sorted_indices[1]]
