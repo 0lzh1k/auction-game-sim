@@ -83,11 +83,7 @@ class Auction:
         
         return winner, payment
     
-    def _calculate_efficiency(self, winner: Agent) -> float:
-        highest_valuation_agent = max(self.agents, key=lambda x: x.valuation)
-        return 1.0 if winner == highest_valuation_agent else 0.0
-
-
+    
 class AuctionSimulator:
     
     def __init__(self):
