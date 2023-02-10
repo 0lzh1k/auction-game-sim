@@ -153,14 +153,4 @@ class AuctionSimulator:
             
             pass
         
-        return {
-            "auction_type": auction_type,
-            "num_simulations": len(results),
-            "average_revenue": np.mean(revenues),
-            "revenue_std": np.std(revenues),
-            "average_efficiency": np.mean(efficiencies),
-            "efficiency_std": np.std(efficiencies),
-            "all_revenues": revenues,
-            "all_efficiencies": efficiencies,
-            "results": results
-        }
+      
