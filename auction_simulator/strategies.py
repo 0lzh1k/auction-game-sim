@@ -62,3 +62,12 @@ def get_strategy_description(strategy_name: str) -> str:
     }
     return descriptions.get(strategy_name, "Unknown strategy")
 
+
+def get_available_strategies() -> Dict[str, str]:
+    return {
+        "truthful": get_strategy_description("truthful"),
+        "aggressive": get_strategy_description("aggressive"),
+        "conservative": get_strategy_description("conservative"),
+        "random": get_strategy_description("random"),
+        "optimal_first_price": get_strategy_description("optimal_first_price")
+    }
