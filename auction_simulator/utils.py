@@ -16,6 +16,17 @@ def generate_random_valuations(num_bidders: int, distribution: str = "uniform",
         raise ValueError(f"Unknown distribution: {distribution}")
 
 
+def calculate_theoretical_revenue(auction_type: str, num_bidders: int, 
+                                valuation_range: tuple = (0, 100)) -> float:
+    low, high = valuation_range
+    valuation_span = high - low
+    
+    if auction_type == "first_price":
+        return ((num_bidders - 1) / (num_bidders + 1)) * valuation_span + low
+    elif auction_type == "second_price":
+        return ((num_bidders - 1) / (num_bidders + 1)) * valuation_span + low
+    else:
+        return 0
 
 
 def results_to_dataframe(results: List[Any]) -> pd.DataFrame:
