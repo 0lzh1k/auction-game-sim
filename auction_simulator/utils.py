@@ -17,8 +17,6 @@ def generate_random_valuations(num_bidders: int, distribution: str = "uniform",
 
 
 
-
-
 def results_to_dataframe(results: List[Any]) -> pd.DataFrame:
 
     data = []
