@@ -75,8 +75,7 @@ def calculate_auction_efficiency(results: List[Any]) -> Dict[str, float]:
     }
 
 
-def format_currency(amount: float) -> str:
-    return f"${amount:.2f}"
+
 
 
 def format_percentage(value: float) -> str:
