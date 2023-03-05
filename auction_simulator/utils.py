@@ -73,3 +73,11 @@ def calculate_auction_efficiency(results: List[Any]) -> Dict[str, float]:
         'efficiency_std': np.std(efficiencies),
         'perfect_efficiency_rate': np.mean([e == 1.0 for e in efficiencies])
     }
+
+
+def format_currency(amount: float) -> str:
+    return f"${amount:.2f}"
+
+
+def format_percentage(value: float) -> str:
+    return f"{value * 100:.1f}%"
