@@ -11,7 +11,13 @@ from visualizations import (
     plot_auction_comparison
 )
 
-
+def main():
+    st.set_page_config(
+        page_title="Auction Strategy Game Simulator",
+        page_icon="🏆",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
     st.title("Auction Strategy Game Simulator")
     st.markdown("""
     Explore game theory principles through interactive auction simulations. 
