@@ -18,7 +18,7 @@ def main():
         layout="wide",
         initial_sidebar_state="expanded"
     )
-    st.title("Auction Strategy Game Simulator")
+    
     st.markdown("""
     Explore game theory principles through interactive auction simulations. 
     This tool demonstrates how different bidding strategies perform under various auction formats.
