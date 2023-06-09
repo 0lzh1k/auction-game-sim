@@ -23,7 +23,7 @@ def main():
     Explore game theory principles through interactive auction simulations. 
     This tool demonstrates how different bidding strategies perform under various auction formats.
     """)
-    with st.sidebar:
+ 
         st.header("Simulation Configuration")
         auction_type = st.selectbox(
             "Auction Type",
