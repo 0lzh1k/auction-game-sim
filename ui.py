@@ -134,5 +134,3 @@ def main():
     else:
         st.info("Configure the simulation and click 'Run Simulation' to begin.")
 
-if __name__ == "__main__":
-    main()
